@@ -2,6 +2,13 @@
 // btn.addEventListener('click', event => {
 //     parkCar();
 // });
+
+
+function loadCars() {
+    let vehicles = JSON.parse(localStorage.getItem("vehicles"));
+    parkedVehicleDetails = vehicles ? vehicles : []
+    generateVehicleTable(parkedVehicleDetails);
+}
 let parkedVehicleDetails = []
 let id = 0;
 function parkCar() {
@@ -29,6 +36,7 @@ function generateVehicleTable(parkedVehicleDetails) {
     }
     html += "</table>";
     document.getElementById("vehicles").innerHTML = html;
+    localStorage.setItem("vehicles", JSON.stringify(parkedVehicleDetails));
 }
 
 function deleteFromTable(id) {
