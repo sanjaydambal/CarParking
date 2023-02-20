@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarParking</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarParking</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-     
+
+<body onload="loadCars()">
+
   <div class="container">
-    <header id="header"><b> Parking Lot</b></header> 
-    <form action="action_page.php">
+    <header id="header"><b> Parking Lot</b></header>
+    <form>
       <div class="row">
         <div class="col-25">
           <label for="Oname">Owner Name</label>
@@ -27,10 +29,12 @@
         <div class="col-75">
           <input type="text" id="Rnumber" name="Registration Number" placeholder="Registration Number">
         </div>
-        <div class="row" >
-            <input type="submit" id="submit" value="Submit">
-          </div>
-        </form>
-        <script src="parking.js"></script>
+        <div class="row">
+          <button type="button" id="submit" value="Submit" onclick="parkCar()">Submit</button>
+        </div>
+    </form>
+    <div id="vehicles"></div>
+    <script src="parking.js"></script>
 </body>
+
 </html>

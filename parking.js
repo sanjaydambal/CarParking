@@ -1,7 +1,14 @@
-let btn = document.getElementById("submit");
-btn.addEventListener('click', event => {
-    parkCar();
-});
+// let btn = document.getElementById("submit");
+// btn.addEventListener('click', event => {
+//     parkCar();
+// });
+
+
+function loadCars() {
+    let vehicles = JSON.parse(localStorage.getItem("vehicles"));
+    parkedVehicleDetails = vehicles ? vehicles : []
+    generateVehicleTable(parkedVehicleDetails);
+}
 let parkedVehicleDetails = []
 let id = 0;
 function parkCar() {
@@ -9,13 +16,12 @@ function parkCar() {
     console.log(document.getElementById("Rnumber").value);
     let parkedVehicle = {
         owner_name: document.getElementById("Oname").value,
-        car_reg_no: document.getElementById("Rnumbe").value,
+        car_reg_no: document.getElementById("Rnumber").value,
         id: id++
     }
     parkedVehicleDetails.push(parkedVehicle);
-
-    generateVehicleTable(parkedVehicleDetails)
-
+    generateVehicleTable(parkedVehicleDetails);
+    return false;
 }
 
 function generateVehicleTable(parkedVehicleDetails) {
@@ -30,6 +36,7 @@ function generateVehicleTable(parkedVehicleDetails) {
     }
     html += "</table>";
     document.getElementById("vehicles").innerHTML = html;
+    localStorage.setItem("vehicles", JSON.stringify(parkedVehicleDetails));
 }
 
 function deleteFromTable(id) {
